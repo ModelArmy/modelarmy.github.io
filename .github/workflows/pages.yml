@@ -3,7 +3,9 @@ name: Deploy site
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  workflow_dispatch:
 
 permissions:
   contents: read
@@ -46,6 +48,7 @@ jobs:
           path: public
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
