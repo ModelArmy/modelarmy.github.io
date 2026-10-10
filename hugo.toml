@@ -19,7 +19,7 @@ enableRobotsTXT = true
 [params]
   description = "Open-source Crystal libraries and command-line tools."
   github = "https://github.com/ModelArmy"
-  siteSource = "https://github.com/ModelArmy/website"
+  siteSource = "https://github.com/ModelArmy/modelarmy.github.io"
 
 [[menus.main]]
   name = "Projects"
