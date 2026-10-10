@@ -34,3 +34,8 @@ resources/
 
 # Namespace for temp files
 tmp*
+
+# Specific to diagram rendering
+node_modules/
+.cache/
+**/rendered/

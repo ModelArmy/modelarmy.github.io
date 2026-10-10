@@ -506,7 +506,15 @@ h3 {
 }
 
 .prose {
+  max-width: none;
+}
+
+.prose > * {
   max-width: var(--measure);
+}
+
+.prose > .diagram {
+  max-width: 100%;
 }
 
 .prose> :first-child {
@@ -650,4 +658,30 @@ pre.chroma,
 
 .feed-status:empty {
   display: none;
+}
+
+.diagram {
+  margin: 1.75rem 0;
+  overflow-x: auto;
+}
+
+.diagram img {
+  display: block;
+  max-width: none;
+  width: max(min(100%, var(--w)), calc(var(--w) * 0.7));
+  height: auto;
+}
+
+.diagram figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.diagram-missing {
+  padding: 1rem 1.25rem;
+  background: var(--panel);
+  border-left: 4px solid var(--accent);
+  font-family: var(--display);
 }

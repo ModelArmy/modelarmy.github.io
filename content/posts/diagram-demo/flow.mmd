@@ -1,0 +1,10 @@
+flowchart LR
+    source["Diagram source<br/>.mmd or .vl.json"]
+    render["Render script"]
+    svg["Light and dark SVG"]
+    hugo{{"Hugo build"}}
+    site["Static page"]
+
+    source --> render --> svg --> hugo --> site
+
+    class hugo emphasis

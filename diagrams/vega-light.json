@@ -1,0 +1,23 @@
+{
+  "background": "transparent",
+  "font": "Arial, Helvetica, sans-serif",
+  "view": { "stroke": "transparent" },
+  "mark": { "color": "#5a3bd1" },
+  "bar": { "fill": "#5a3bd1" },
+  "line": { "stroke": "#5a3bd1", "strokeWidth": 2.5 },
+  "point": { "fill": "#5a3bd1", "stroke": "#5a3bd1" },
+  "axis": {
+    "labelColor": "#55646b",
+    "titleColor": "#182125",
+    "domainColor": "#55646b",
+    "tickColor": "#55646b",
+    "gridColor": "#c8d0d3",
+    "labelFontSize": 12,
+    "titleFontSize": 13
+  },
+  "legend": { "labelColor": "#55646b", "titleColor": "#182125" },
+  "title": { "color": "#182125", "fontSize": 16, "anchor": "start" },
+  "range": {
+    "category": ["#5a3bd1", "#0b6b5d", "#9a4d00", "#55646b", "#8b5cf6", "#2f855a"]
+  }
+}

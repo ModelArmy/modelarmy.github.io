@@ -3,6 +3,10 @@ locale = "en"
 title = "ModelArmy"
 enableRobotsTXT = true
 
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+
 [taxonomies]
   kind = "kinds"
 
