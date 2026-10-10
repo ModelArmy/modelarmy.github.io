@@ -29,8 +29,9 @@
   --ink: #182125;
   --muted: #55646b;
   --rule: #c8d0d3;
-  --accent: #5a3bd1;
-  --syntax-string: #0b6b5d;
+  --accent: #55731c;
+  --syntax-keyword: #4f6c1a;
+  --syntax-string: #1f5f8b;
   --syntax-number: #9a4d00;
   --display: "Archivo", system-ui, "Segoe UI", sans-serif;
   --text: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -46,8 +47,9 @@
     --ink: #e8edec;
     --muted: #9aa9b0;
     --rule: #2c383d;
-    --accent: #a898ff;
-    --syntax-string: #6fd3bf;
+    --accent: #a8bf7d;
+    --syntax-keyword: #a8bf7d;
+    --syntax-string: #7cc4e8;
     --syntax-number: #f0b36a;
   }
 }
@@ -616,7 +618,7 @@ pre.chroma,
 .chroma .kr,
 .chroma .kt,
 .chroma .nt {
-  color: var(--accent);
+  color: var(--syntax-keyword);
 }
 
 .chroma .s,

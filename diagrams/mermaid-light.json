@@ -22,5 +22,5 @@
     "noteTextColor": "#182125",
     "noteBorderColor": "#55646b"
   },
-  "themeCSS": ".node.emphasis rect, .node.emphasis polygon, .node.emphasis circle, .node.emphasis ellipse, .node.emphasis path { stroke: #5a3bd1 !important; stroke-width: 3px !important; }"
+  "themeCSS": ".node.emphasis rect, .node.emphasis polygon, .node.emphasis circle, .node.emphasis ellipse, .node.emphasis path { stroke: #55731c !important; stroke-width: 3px !important; }"
 }
