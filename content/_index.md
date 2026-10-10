@@ -1,4 +1,4 @@
 ---
 title: ModelArmy
 ---
-Open-source Crystal libraries and command-line tools. Each does what it says and nothing more.
+Open-source Crystal libraries and command-line tools that enable and support _safe_ and productive use of AI.
