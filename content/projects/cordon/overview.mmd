@@ -1,0 +1,14 @@
+---
+displayMode: compact
+config:
+  layout: elk
+---
+flowchart TD
+    P["Policy\n(platform-agnostic)"]
+    R["Runner\n(platform-specific)"]
+    N["Native invocation\nbwrap flags · SBPL profile"]
+    C["Sandboxed child process"]
+
+    P -->|"translated by"| R
+    R -->|"produces"| N
+    N -->|"executes"| C
