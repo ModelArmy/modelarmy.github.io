@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="hero">
+  <h1 class="mark"><span class="mark-top">{{ site.Title }}</span><span class="mark-bottom" aria-hidden="true">{{ site.Title }}</span></h1>
+  <div class="lede">{{ .Content }}</div>
+</section>
+
+<section class="catalogue" aria-labelledby="projects-heading">
+  <h2 id="projects-heading" class="sr">Projects</h2>
+  {{ $projects := sort (where site.RegularPages "Section" "projects") "Title" }}
+  {{ partial "catalogue.html" (dict "pages" $projects "current" "") }}
+</section>
+
+{{ $posts := first 3 (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ with $posts }}
+<section class="latest" aria-labelledby="posts-heading">
+  <h2 id="posts-heading">Latest posts</h2>
+  <ul class="post-list">{{ range . }}{{ partial "post-line.html" . }}{{ end }}</ul>
+  <p class="more"><a href="/posts/">All posts</a>{{ partial "feed-link.html" $ }}</p>
+</section>
+{{ end }}
+{{ end }}

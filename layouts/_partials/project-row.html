@@ -1,0 +1,10 @@
+{{ $kinds := .GetTerms "kinds" }}
+<li class="row{{ if eq .Params.status "archived" }} is-archived{{ end }}">
+  <span class="row-kinds">
+    {{ range $kinds }}<span class="glyph glyph-{{ .Data.Term }}" aria-hidden="true"></span>{{ end }}
+    <span class="sr">{{ range $i, $k := $kinds }}{{ if $i }}, {{ end }}{{ $k.LinkTitle }}{{ end }}:</span>
+  </span>
+  <h3 class="row-name"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p class="row-summary">{{ .Params.summary }}</p>
+  {{ with .Params.status }}<span class="row-status">{{ . | title }}</span>{{ end }}
+</li>

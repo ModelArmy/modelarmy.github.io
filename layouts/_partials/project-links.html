@@ -1,0 +1,10 @@
+{{ $slugs := slice }}
+{{ range .Params.projects }}
+  {{ with site.GetPage (printf "/projects/%s" .) }}{{ $slugs = $slugs | append . }}
+  {{ else }}{{ errorf "post %s names unknown project %q" $.Path . }}{{ end }}
+{{ end }}
+{{ with $slugs }}
+<p class="about">About
+  {{ range $i, $p := . }}{{ if $i }}, {{ end }}<a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>{{ end }}
+</p>
+{{ end }}

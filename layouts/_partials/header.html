@@ -1,0 +1,12 @@
+{{ $p := . }}
+<header class="bar wrap">
+  {{ if .IsHome }}<span></span>{{ else }}
+  <a class="brand" href="/"><span class="mark mark-sm"><span class="mark-top">{{ site.Title }}</span><span class="mark-bottom" aria-hidden="true">{{ site.Title }}</span></span></a>
+  {{ end }}
+  <nav aria-label="Main">
+    {{ range site.Menus.main }}
+    <a href="{{ .URL }}" {{ if and .Page (or ($p.Eq .Page) ($p.IsDescendant .Page)) }} aria-current="page" {{ end }}>{{
+      .Name }}</a>
+    {{ end }}
+  </nav>
+</header>

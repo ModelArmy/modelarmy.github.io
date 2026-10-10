@@ -1,0 +1,24 @@
+{
+  "name": "modelarmy-site",
+  "private": true,
+  "description": "Static site for the ModelArmy organization",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "diagrams": "scripts/render-diagrams.sh",
+    "diagrams:watch": "node scripts/diagrams.mjs watch",
+    "dev": "node scripts/diagrams.mjs dev",
+    "build": "npm run diagrams && hugo --gc --minify"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "canvas": "npm:@napi-rs/canvas@1.0.9",
+    "puppeteer": "25.12.0",
+    "vega": "6.4.0",
+    "vega-lite": "6.4.3"
+  },
+  "allowScripts": {
+    "puppeteer@25.12.0": true
+  }
+}

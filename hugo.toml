@@ -1,0 +1,41 @@
+baseURL = "https://modelarmy.dev/"
+locale = "en"
+title = "ModelArmy"
+enableRobotsTXT = true
+
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+
+[taxonomies]
+  kind = "kinds"
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
+
+[markup.highlight]
+  noClasses = false
+  guessSyntax = false
+
+[params]
+  description = "Open-source Crystal libraries and command-line tools."
+  github = "https://github.com/ModelArmy"
+  siteSource = "https://github.com/ModelArmy/modelarmy.github.io"
+
+[[menus.main]]
+  name = "Projects"
+  pageRef = "/projects"
+  weight = 10
+
+[[menus.main]]
+  name = "Posts"
+  pageRef = "/posts"
+  weight = 20
+
+[[menus.main]]
+  name = "GitHub"
+  url = "https://github.com/ModelArmy"
+  weight = 30

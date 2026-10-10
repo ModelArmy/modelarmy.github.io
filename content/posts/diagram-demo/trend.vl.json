@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 420,
+  "height": 220,
+  "title": "Sample data",
+  "data": {
+    "values": [
+      { "step": "Parse", "ms": 120 },
+      { "step": "Layout", "ms": 340 },
+      { "step": "Draw", "ms": 210 },
+      { "step": "Write", "ms": 45 }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "step", "type": "nominal", "sort": null, "axis": { "labelAngle": 0, "title": null } },
+    "y": { "field": "ms", "type": "quantitative", "title": "Milliseconds" }
+  }
+}

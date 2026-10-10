@@ -1,0 +1,4 @@
+{{ partial "kind-filter.html" (dict "current" .current) }}
+<ol class="roster">
+  {{ range .pages }}{{ partial "project-row.html" . }}{{ end }}
+</ol>

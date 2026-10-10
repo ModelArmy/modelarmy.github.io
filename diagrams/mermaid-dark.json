@@ -1,0 +1,26 @@
+{
+  "theme": "base",
+  "fontFamily": "Arial, Helvetica, sans-serif",
+  "htmlLabels": false,
+  "flowchart": { "htmlLabels": false },
+  "themeVariables": {
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "background": "#11171a",
+    "textColor": "#e8edec",
+    "primaryColor": "#192125",
+    "primaryTextColor": "#e8edec",
+    "primaryBorderColor": "#9aa9b0",
+    "secondaryColor": "#192125",
+    "tertiaryColor": "#11171a",
+    "lineColor": "#9aa9b0",
+    "mainBkg": "#192125",
+    "nodeBorder": "#9aa9b0",
+    "clusterBkg": "#161d20",
+    "clusterBorder": "#2c383d",
+    "edgeLabelBackground": "#11171a",
+    "noteBkgColor": "#192125",
+    "noteTextColor": "#e8edec",
+    "noteBorderColor": "#9aa9b0"
+  },
+  "themeCSS": ".node.emphasis rect, .node.emphasis polygon, .node.emphasis circle, .node.emphasis ellipse, .node.emphasis path { stroke: #a8bf7d !important; stroke-width: 3px !important; }"
+}
