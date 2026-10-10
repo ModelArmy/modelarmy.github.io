@@ -1,6 +1,6 @@
 # modelarmy.dev
 
-Static site for the ModelArmy organisation, built with [Hugo](https://gohugo.io) (extended, v0.167.0 or later) and deployed to GitHub Pages. No JavaScript, no third-party requests.
+Static site for the ModelArmy organisation, built with [Hugo](https://gohugo.io) (extended, v0.167.0 or later) and deployed to GitHub Pages. No third-party requests. The only JavaScript is a few lines that copy the feed URL to the clipboard; the feed link works without it.
 
 ## Preview
 

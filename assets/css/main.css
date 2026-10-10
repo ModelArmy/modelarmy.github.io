@@ -636,3 +636,18 @@ pre.chroma,
   color: var(--muted);
   font-style: italic;
 }
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.feed-status {
+  margin-left: 0.75rem;
+  color: var(--muted);
+}
+
+.feed-status:empty {
+  display: none;
+}

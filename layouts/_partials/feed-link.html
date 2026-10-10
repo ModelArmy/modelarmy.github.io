@@ -1,0 +1,26 @@
+{{ $page := . }}
+{{ with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}
+<span class="feed">
+  <a href="{{ .RelPermalink }}" data-copy-url="{{ .Permalink }}">RSS feed</a>
+  <span class="feed-status" role="status"></span>
+</span>
+{{ if not ($page.Store.Get "feed-script") }}{{ $page.Store.Set "feed-script" true }}
+<script>
+document.addEventListener("click", async (e) => {
+  const link = e.target.closest("[data-copy-url]");
+  if (!link) return;
+  e.preventDefault();
+  const url = link.dataset.copyUrl;
+  const status = link.parentElement.querySelector(".feed-status");
+  clearTimeout(status.timer);
+  try {
+    await navigator.clipboard.writeText(url);
+    status.textContent = "Feed URL copied";
+    status.timer = setTimeout(() => { status.textContent = ""; }, 4000);
+  } catch {
+    window.prompt("Copy this feed URL:", url);
+  }
+});
+</script>
+{{ end }}
+{{ end }}{{ end }}

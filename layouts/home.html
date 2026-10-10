@@ -15,7 +15,7 @@
 <section class="latest" aria-labelledby="posts-heading">
   <h2 id="posts-heading">Latest posts</h2>
   <ul class="post-list">{{ range . }}{{ partial "post-line.html" . }}{{ end }}</ul>
-  <p class="more"><a href="/posts/">All posts</a></p>
+  <p class="more"><a href="/posts/">All posts</a>{{ partial "feed-link.html" $ }}</p>
 </section>
 {{ end }}
 {{ end }}
