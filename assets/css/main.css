@@ -506,6 +506,7 @@ h3 {
 }
 
 .prose {
+  display: flow-root;
   max-width: none;
 }
 
@@ -663,6 +664,19 @@ pre.chroma,
 .diagram {
   margin: 1.75rem 0;
   overflow-x: auto;
+}
+
+.diagram:not(.diagram-float) {
+  clear: right;
+}
+
+@media (min-width: 71rem) {
+  .diagram-float {
+    float: right;
+    clear: right;
+    width: var(--w);
+    margin: 0.25rem calc(17rem - var(--w)) 1.25rem 1.5rem;
+  }
 }
 
 .diagram img {

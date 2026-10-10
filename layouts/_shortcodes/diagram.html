@@ -1,14 +1,23 @@
 {{- $name := .Get "src" -}}
 {{- $alt := .Get "alt" -}}
+{{- $floatMax := 360 -}}
 {{- if not $alt }}{{ errorf "diagram %q needs alt text (%s)" $name .Position }}{{ end -}}
 {{- $light := .Page.Resources.Get (printf "rendered/%s.light.svg" $name) | or (.Page.Resources.Get (printf "%s.light.svg" $name)) -}}
 {{- $dark := .Page.Resources.Get (printf "rendered/%s.dark.svg" $name) | or (.Page.Resources.Get (printf "%s.dark.svg" $name)) -}}
 {{- if and $light $dark -}}
 {{- $size := findRESubmatch `<svg width="([0-9.]+)" height="([0-9.]+)"` $light.Content 1 -}}
-<figure class="diagram" tabindex="0">
+{{- $width := 0.0 -}}
+{{- with $size }}{{ with index . 0 }}{{ $width = float (index . 1) }}{{ end }}{{ end -}}
+{{- $float := false -}}
+{{- with .Get "float" -}}
+  {{- if ne . "right" }}{{ errorf "diagram %q: float must be \"right\" (%s)" $name $.Position }}{{ end -}}
+  {{- if and (gt $width 0.0) (le $width $floatMax) -}}{{ $float = true }}
+  {{- else }}{{ warnf "diagram %q is %.0fpx wide, over the %dpx float limit, so it is shown full width (%s)" $name $width $floatMax $.Position }}{{ end -}}
+{{- end -}}
+<figure class="diagram{{ if $float }} diagram-float{{ end }}"{{ if not $float }} tabindex="0"{{ end }}{{ if gt $width 0.0 }} style="{{ printf "--w:%spx" (index (index $size 0) 1) | safeCSS }}"{{ end }}>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="{{ $dark.RelPermalink }}">
-    <img src="{{ $light.RelPermalink }}" alt="{{ $alt }}"{{ with $size }}{{ with index . 0 }} width="{{ index . 1 }}" height="{{ index . 2 }}" style="{{ printf "--w:%spx" (index . 1) | safeCSS }}"{{ end }}{{ end }}>
+    <img src="{{ $light.RelPermalink }}" alt="{{ $alt }}"{{ if gt $width 0.0 }} width="{{ index (index $size 0) 1 }}" height="{{ index (index $size 0) 2 }}"{{ end }}>
   </picture>
   {{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
 </figure>

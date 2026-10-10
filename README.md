@@ -55,6 +55,8 @@ Each source is rendered twice, with the light and dark palettes in `diagrams/`, 
 
 Wide diagrams scroll sideways on narrow screens rather than shrinking, so prefer `flowchart TD` for diagrams that must read well on a phone.
 
+On screens at least 71rem wide, `float="right"` moves a diagram into the right margin beside the text. The diagram must be 360px wide or narrower. A wider one is shown full width instead, and the build prints a warning. Tall, narrow diagrams suit it: `flowchart TD` with short labels, or a Vega-Lite spec with `"width": 240`. Consecutive floated diagrams stack down the margin, and place the shortcode just before the paragraph it should sit beside.
+
 Figures produced elsewhere, such as R charts, are committed as `<name>.light.svg` and `<name>.dark.svg` directly beside `index.md` (not in `rendered/`), and use the same shortcode.
 
 ## Add a kind
