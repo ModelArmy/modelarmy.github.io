@@ -1,0 +1,62 @@
+{{ define "main" }}
+{{ $slug := .File.ContentBaseName }}
+{{ $shard := .Params.shard | default $slug }}
+{{ $kinds := .GetTerms "kinds" }}
+{{ $isLib := in .Params.kinds "library" }}
+{{ $isCli := in .Params.kinds "cli" }}
+<article class="project">
+  <header class="project-head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
+    <ul class="facts">
+      {{ range $kinds }}<li><a href="{{ .RelPermalink }}"><span class="glyph glyph-{{ .Data.Term }}" aria-hidden="true"></span>{{ .LinkTitle }}</a></li>{{ end }}
+      {{ with .Params.status }}<li class="status">{{ . | title }}</li>{{ end }}
+    </ul>
+    <ul class="links">
+      {{ with .Params.repo }}<li><a href="https://github.com/{{ . }}">Source</a></li>{{ end }}
+      {{ with .Params.docs }}<li><a href="{{ . }}">API documentation</a></li>{{ end }}
+      {{ if and $isCli .Params.repo }}<li><a href="https://github.com/{{ .Params.repo }}/releases">Releases</a></li>{{ end }}
+    </ul>
+  </header>
+
+  <div class="prose">{{ .Content }}</div>
+
+  {{ if and $isLib .Params.repo }}
+  <section class="install" aria-labelledby="lib-install">
+    <h2 id="lib-install">Add the shard</h2>
+    <p>Add it to the dependencies in <code>shard.yml</code>, then run <code>shards install</code>.</p>
+    {{ $snippet := printf "dependencies:\n  %s:\n    github: %s\n" $shard .Params.repo }}
+    {{ transform.Highlight $snippet "yaml" }}
+  </section>
+  {{ end }}
+
+  {{ if and $isCli .Params.install }}
+  <section class="install" aria-labelledby="cli-install">
+    <h2 id="cli-install">Install the command</h2>
+    {{ transform.Highlight .Params.install "sh" }}
+  </section>
+  {{ end }}
+
+  {{ $related := slice }}
+  {{ range .Params.related }}
+    {{ with site.GetPage (printf "/projects/%s" .) }}{{ $related = $related | append . }}
+    {{ else }}{{ errorf "project %s names unknown related project %q" $.Path . }}{{ end }}
+  {{ end }}
+  {{ $back := where (where site.RegularPages "Section" "projects") "Params.related" "intersect" (slice $slug) }}
+  {{ $related = $related | append $back | uniq }}
+  {{ with $related }}
+  <section class="related" aria-labelledby="related-heading">
+    <h2 id="related-heading">Related projects</h2>
+    <ol class="roster">{{ range sort . "Title" }}{{ partial "project-row.html" . }}{{ end }}</ol>
+  </section>
+  {{ end }}
+
+  {{ $posts := (where (where site.RegularPages "Section" "posts") "Params.projects" "intersect" (slice $slug)).ByDate.Reverse }}
+  {{ with $posts }}
+  <section class="related" aria-labelledby="posts-heading">
+    <h2 id="posts-heading">Posts about {{ $.Title }}</h2>
+    <ul class="post-list">{{ range . }}{{ partial "post-line.html" . }}{{ end }}</ul>
+  </section>
+  {{ end }}
+</article>
+{{ end }}

@@ -1,0 +1,4 @@
+{{ define "main" }}
+<header class="page-head"><h1>{{ .Title }}</h1></header>
+<ul class="post-list">{{ range .Pages.ByDate.Reverse }}{{ partial "post-line.html" . }}{{ end }}</ul>
+{{ end }}

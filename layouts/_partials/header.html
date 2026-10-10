@@ -1,0 +1,11 @@
+{{ $p := . }}
+<header class="bar wrap">
+  {{ if .IsHome }}<span></span>{{ else }}
+  <a class="brand" href="/"><span class="glyph glyph-library" aria-hidden="true"></span>{{ site.Title }}</a>
+  {{ end }}
+  <nav aria-label="Main">
+    {{ range site.Menus.main }}
+    <a href="{{ .URL }}"{{ if and .Page (or ($p.Eq .Page) ($p.IsDescendant .Page)) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+</header>

@@ -1,0 +1,9 @@
+<nav class="filter" aria-label="Filter projects by kind">
+  <a href="/projects/"{{ if not .current }} aria-current="page"{{ end }}>All</a>
+  {{ range (site.GetPage "/kinds").Pages.ByWeight }}
+  <a href="{{ .RelPermalink }}"{{ if eq .Data.Term $.current }} aria-current="page"{{ end }}>
+    <span class="glyph glyph-{{ .Data.Term }}" aria-hidden="true"></span>{{ .LinkTitle }}
+    <span class="count">{{ len .Pages }}</span>
+  </a>
+  {{ end }}
+</nav>

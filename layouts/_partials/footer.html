@@ -1,0 +1,5 @@
+<footer class="foot wrap">
+  &copy; Copyright 2026 Model Army team. All rights reserved.
+  {{ with site.GetPage "/posts" }}{{ with .OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">Posts feed</a>{{ end
+  }}{{ end }}
+</footer>
