@@ -5,7 +5,8 @@
   {{ end }}
   <nav aria-label="Main">
     {{ range site.Menus.main }}
-    <a href="{{ .URL }}"{{ if and .Page (or ($p.Eq .Page) ($p.IsDescendant .Page)) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    <a href="{{ .URL }}" {{ if and .Page (or ($p.Eq .Page) ($p.IsDescendant .Page)) }} aria-current="page" {{ end }}>{{
+      .Name }}</a>
     {{ end }}
   </nav>
 </header>

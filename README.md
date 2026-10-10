@@ -49,3 +49,7 @@ Pushing to `main` builds and deploys through `.github/workflows/pages.yml`. Page
 ## Fonts
 
 Archivo and Source Serif 4, self-hosted under the SIL Open Font License. Licences are in `static/fonts/`.
+
+## Licensing
+
+Everything outside `content/` is under MPL-2.0 (see `LICENSE`), except the fonts in `static/fonts/`, which keep their SIL Open Font License. Text under `content/` is © 2026 ModelArmy contributors, all rights reserved.
