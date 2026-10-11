@@ -54,6 +54,10 @@ The owner's live instructions in a session override this file.
   decisions and questions, and number multi-step instructions.
 - Say "AI agent" the first time a page or post refers to one, including in a project
   summary. "Agent" alone is fine after that.
+- Pull request descriptions have two sections, **What?** and **Why?**. Say the outcomes
+  and the motivations in a few lines each. Leave out anything the commits and the diff
+  already show, such as file lists, how it works, and test output. Report what was and
+  was not tested in the reply to the owner, not in the description.
 
 ### Working rhythm
 
