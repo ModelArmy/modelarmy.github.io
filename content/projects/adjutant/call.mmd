@@ -1,0 +1,24 @@
+---
+displayMode: compact
+config:
+  layout: elk
+---
+flowchart TD
+    C["Script calls\na Legate verb"]
+    G{{"Inside the\ngrants?"}}
+    F["Run ends\n(no rescue)"]
+    P{{"Risk-flow\npolicy says?"}}
+    U(["User: allow\nor reject?"])
+    E["Call runs"]
+    X["Rescuable\nerror"]
+
+    C --> G
+    G -->|"No"| F
+    G -->|"Yes"| P
+    P -->|"Allow"| E
+    P -->|"Ask"| U
+    P -->|"Reject"| X
+    U -->|"Allow"| E
+    U -->|"Reject"| X
+
+    class U emphasis
