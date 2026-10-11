@@ -24,10 +24,13 @@ File.write("vienna.json", M::Archive.write(session))
 session = M::Archive.read(File.read("vienna.json"))
 session << M::Message.user("Now recommend a coffee house.")
 
-anthropic = Liaison::Server.new("anthropic", "https://api.anthropic.com", ENV["ANTHROPIC_API_KEY"])
-provider = Liaison::Provider.for(anthropic, Liaison::ProtocolKind::Anthropic)
+anthropic = Liaison::Server.new("anthropic",
+  "https://api.anthropic.com", ENV["ANTHROPIC_API_KEY"])
+provider = Liaison::Provider.for(anthropic,
+  Liaison::ProtocolKind::Anthropic)
 
-reply, report = Liaison::Client.new(provider).send(session, "claude-haiku-4-5")
+client = Liaison::Client.new(provider)
+reply, report = client.send(session, "claude-haiku-4-5")
 ```
 
 Four protocols are covered: Anthropic Messages, Chat Completions (which also reaches Ollama), Responses and Gemini. Azure OpenAI works as a deployment of Chat Completions or Responses.
