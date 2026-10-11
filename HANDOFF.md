@@ -52,6 +52,8 @@ The owner's live instructions in a session override this file.
   zoomed views.
 - Writing is matter-of-fact and concise. Prefer examples to abstraction, label
   decisions and questions, and number multi-step instructions.
+- Say "AI agent" the first time a page or post refers to one, including in a project
+  summary. "Agent" alone is fine after that.
 
 ### Working rhythm
 
