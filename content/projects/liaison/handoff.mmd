@@ -1,0 +1,14 @@
+---
+displayMode: compact
+config:
+  layout: elk
+---
+flowchart TD
+    A["Ollama\n(turns 1-3)"]
+    S["Session\n(canonical, portable)"]
+    B["Anthropic\n(turns 4-6)"]
+    R["Report\n(what the handoff cost)"]
+
+    A -->|"export"| S
+    S -->|"resume"| B
+    B -.->|"returned with\nevery reply"| R
