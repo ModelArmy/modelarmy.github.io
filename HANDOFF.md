@@ -1,8 +1,8 @@
 # ModelArmy site -- Session Handoff
 
-Last verified 2026-10-10 against `main` at `993e557` (first-launch PR merged), plus the
-Pages settings changes made afterwards. If `git log` shows newer commits, treat
-"Where things stand" as possibly stale.
+Last verified 2026-10-10 against `main` at `01d685f` (PR #2: the project descriptions
+and the `in development` status). If `git log` shows newer commits, treat "Where things
+stand" as possibly stale.
 
 ## Repository
 
@@ -37,8 +37,9 @@ The owner's live instructions in a session override this file.
   behaviour). Check, and say plainly what could not be verified.
 - Test before handing over: build from a fresh clone. For visual changes, capture
   light and dark at desktop and phone widths, and measure rather than eyeball.
-- Deliver changes as a patch that applies to the current branch head, verified on a
-  fresh clone, with a suggested one-line commit message. The owner commits and pushes.
+- Deliver the changed files themselves when five or fewer are modified. For more, deliver
+  a patch that applies to the current branch head, verified on a fresh clone. Either
+  way, add a suggested one-line commit message. The owner commits and pushes.
 - Pin dependencies. Avoid releases under 14 days old. Never run `npm audit fix --force`.
 - No analytics, no third-party requests, and no popularity metrics (stars, counts,
   rankings) anywhere on the site.
@@ -63,7 +64,7 @@ The owner's live instructions in a session override this file.
 
 1. Lay out the options with trade-offs and a recommendation. The owner decides.
 2. For visual choices, render comparisons from the real site before asking.
-3. Build, test, then deliver the patch and commit message.
+3. Build, test, then deliver the changes and commit message.
 4. The owner pushes a feature branch; the PR build must be green before merging.
 5. After merging, check the Actions run and the live site.
 6. Update this file when a decision or lesson changes.
@@ -75,8 +76,9 @@ The owner's live instructions in a session override this file.
 - **Site:** Hugo with a custom theme in the repo root. Hugo 0.167.0 is pinned in CI.
   Live at modelarmy.dev. The Pages source is GitHub Actions and the custom domain is
   verified, both set in repo settings (a root `CNAME` file also exists but is not needed).
-- **Content:** three projects (Adjutant, Cordon, Liaison), one post ("About"), and
-  a draft `diagram-demo` post that serves as a test bed.
+- **Content:** three projects (Adjutant is `in development`; Cordon and Liaison are
+  `active`), one post ("About"), and a draft `diagram-demo` post that serves as a test
+  bed. Each project page is a hand-written value overview (see Decisions).
 - **Design:** the cleaved wordmark (large on the home page, small in the header),
   olive accent (`#55731c` light, `#a8bf7d` dark), self-hosted Archivo and Source
   Serif 4, light and dark following the OS.
@@ -85,8 +87,9 @@ The owner's live instructions in a session override this file.
   or wider. Committed figures (for example from R) are supported by convention only.
 - **Licensing:** each project keeps its own license; site code is MPL-2.0; site text
   under `content/` is all rights reserved. The footer and README say so.
-- **Confirmed by the owner (2026-10-10):** `Deploy site` is green on `main`, the live
-  site renders well in Firefox and Safari. Assistants cannot see Actions runs, macOS,
+- **Confirmed by the owner (2026-10-10):** `Deploy site` is green on `main`, including
+  `01d685f`, and the live site, with the new project pages and the `in development`
+  status, renders well in Firefox and Safari. Assistants cannot see Actions runs, macOS,
   or the deployed domain, so rely on the owner for anything about production.
 
 ### Open work
@@ -99,6 +102,10 @@ Track tasks as GitHub issues and link them here. At the time of writing:
   feed-copy button, dark diagram switching and floated diagrams were developed and
   tested in Chromium only. Note any defect here if one turns up.
 - R chart tooling: only the commit-the-SVGs convention exists. Build tooling when the first chart arrives.
+- Project descriptions are refreshed by hand. Each page's Limits section says "As of
+  version X"; compare it with the project's `shard.yml` at each minor or major release.
+  Deferred: a weekly workflow that opens an issue when a project's version moves past
+  the page's. Build it when manual checks get missed.
 - Accepted risk: five low-severity `npm audit` findings, all one KaTeX advisory reached
   through Mermaid. Not exploitable here (no untrusted math). Revisit when mermaid-cli
   raises its KaTeX range.
@@ -134,6 +141,13 @@ Each entry gives the reason and what was rejected, so it is not re-argued.
   Chromium); `canvas` is an alias for `@napi-rs/canvas` (prebuilt, no install script).
 - **Licensing split:** project licenses stay with projects; site code MPL-2.0; site text
   all rights reserved. `content/` is the boundary.
+- **Project descriptions are written by hand to one shape:** the problem as an opening
+  paragraph with no heading, then "What you get" (a few outcomes, one example each),
+  "Limits" (dated "As of version X", taken from the project's own docs), and "Next"
+  (links). The audience is a developer deciding whether to use the project. Rejected:
+  copying the README (wrong audience), pulling text from the project repos at build time
+  (crosses the licensing boundary and merges two audiences), and generating it (a
+  machine cannot judge whether a change affects the pitch).
 - **`status: in development` means not ready to use, and the layout reacts to it:** a
   caution-coloured tag in the catalogue and the page header, a "Not ready to use"
   notice under the header, and no dependency snippet or install section. `active`
@@ -162,6 +176,14 @@ Each entry gives the reason and what was rejected, so it is not re-argued.
 - Hugo publishes unreferenced bundle files unless `publishResources = false`, which is set.
 - File-event watchers miss editors that save by replacing the file. The diagram watcher polls.
 - Assistants cannot run CI, macOS or other browsers. State what was and was not tested.
+- Some assistant sandboxes block puppeteer's Chromium download. Install
+  `@sparticuz/chromium` (a version at least 14 days old) in a scratch directory outside
+  the repo, set `PUPPETEER_EXECUTABLE_PATH` to its binary and `DIAGRAMS_PUPPETEER_CONFIG`
+  to a JSON file with `--no-sandbox` and `--single-process` args. Never add it to
+  `package.json`. Its Chromium is older than CI's, so widths are close, not identical.
+- A code block in the prose holds about 65 characters at desktop width. A longer line
+  scrolls and clips its last characters. Wrap long lines, then compare `scrollWidth`
+  with `clientWidth` on `.prose pre`.
 
 ---
 
