@@ -6,13 +6,13 @@ status: active
 repo: ModelArmy/cordon.cr
 ---
 
-{{< diagram src="overview" alt="Cordon turns a platform-agnostic Policy, through a platform-specific Runner, into a native sandbox invocation that runs the child process." float="right">}}
-
 Software that runs other software normally hands the child everything the parent can reach: the home directory, SSH keys, the network. That is true of an agent harness executing system commands chosen by an LLM, and of a build step running a downloaded script. Every major operating system provides a way to manage and prevent that, but each in its own dialect:
 
 - Linux: Bubblewrap flags
 - macOS: Seatbelt profiles
 - Windows 11: a process security environment
+
+{{< diagram src="overview" alt="Cordon turns a platform-agnostic Policy, through a platform-specific Runner, into a native sandbox invocation that runs the child process." float="right">}}
 
 Learning, writing and testing all three has little to do with the thing you are building. Cordon is a portable translation layer for running commands more safely. You describe what a process may read, write and reach, and Cordon turns that into the native sandbox for the host.
 
