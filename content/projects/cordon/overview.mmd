@@ -6,7 +6,7 @@ config:
 flowchart TD
     P["Policy\n(platform-agnostic)"]
     R["Runner\n(platform-specific)"]
-    N["Native invocation\nbwrap flags · SBPL profile"]
+    N["Native invocation\nbwrap flags (Linux)\nSBPL profile (macOS)\nMXC config (Windows)"]
     C["Sandboxed child process"]
 
     P -->|"translated by"| R

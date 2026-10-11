@@ -34,7 +34,7 @@ Fill in the front matter. The file name is the project's slug.
 | `title`   | Repository or shard name                                      |
 | `summary` | One sentence, shown in the catalogue                          |
 | `kinds`   | `library`, `cli`, or both                                     |
-| `status`  | `active`, `stable` or `archived`                              |
+| `status`  | `in development`, `active`, `stable` or `archived`            |
 | `repo`    | `ModelArmy/<repository>`                                      |
 | `docs`    | Optional URL of the API documentation                         |
 | `shard`   | Optional shard name, if it differs from the file name         |
@@ -42,6 +42,8 @@ Fill in the front matter. The file name is the project's slug.
 | `related` | Optional list of project slugs; links are shown on both pages |
 
 The body is the long description in Markdown. A library page shows a `shard.yml` dependency snippet; a CLI page shows `install` and a link to the releases.
+
+`in development` means not ready to use. The value must be spelled exactly so, because the layout compares it as a string. It adds a caution-coloured tag in the catalogue and in the page header, puts a "Not ready to use" notice under the header, and leaves out the dependency snippet or install section. `active` means usable but changing, as before 1.0.
 
 ## Diagrams
 

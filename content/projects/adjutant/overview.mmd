@@ -1,0 +1,17 @@
+---
+displayMode: compact
+config:
+  layout: elk
+---
+flowchart TD
+    S["Script\n(written by an AI agent)"]
+    A["Static risk assessment\n(before it runs)"]
+    U1(["User: allow or reject?\n(only if the risk is high)"])
+    R["Interpreter\n(risk flow tracks data)"]
+    L["Legate: every call is\nchecked and logged"]
+    U2(["User: allow or reject?\n(only if policy says ask)"])
+    W["Files, network,\nenvironment"]
+
+    S --> A --> U1 --> R --> L --> U2 --> W
+
+    class U1,U2 emphasis

@@ -10,7 +10,7 @@
     {{ with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
     <ul class="facts">
       {{ range $kinds }}<li><a href="{{ .RelPermalink }}"><span class="glyph glyph-{{ .Data.Term }}" aria-hidden="true"></span>{{ .LinkTitle }}</a></li>{{ end }}
-      {{ with .Params.status }}<li class="status">{{ . | title }}</li>{{ end }}
+      {{ with .Params.status }}<li class="status{{ if eq . "in development" }} is-dev{{ end }}">{{ . | humanize }}</li>{{ end }}
     </ul>
     <ul class="links">
       {{ with .Params.repo }}<li><a href="https://github.com/{{ . }}">Source</a></li>{{ end }}
@@ -19,9 +19,15 @@
     </ul>
   </header>
 
+  {{ if eq .Params.status "in development" }}
+  <aside class="notice" aria-label="Project status">
+    <p><strong>Not ready to use.</strong> This project is in development, and anything in it may change without notice.</p>
+  </aside>
+  {{ end }}
+
   <div class="prose">{{ .Content }}</div>
 
-  {{ if and $isLib .Params.repo }}
+  {{ if and $isLib .Params.repo (ne .Params.status "in development") }}
   <section class="install" aria-labelledby="lib-install">
     <h2 id="lib-install">Add the shard</h2>
     <p>Add it to the dependencies in <code>shard.yml</code>, then run <code>shards install</code>.</p>
