@@ -6,5 +6,5 @@
   </span>
   <h3 class="row-name"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
   <p class="row-summary">{{ .Params.summary }}</p>
-  {{ with .Params.status }}<span class="row-status">{{ . | title }}</span>{{ end }}
+  {{ with .Params.status }}<span class="row-status{{ if eq . "in development" }} is-dev{{ end }}">{{ . | humanize }}</span>{{ end }}
 </li>

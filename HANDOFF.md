@@ -128,6 +128,15 @@ Each entry gives the reason and what was rejected, so it is not re-argued.
   Chromium); `canvas` is an alias for `@napi-rs/canvas` (prebuilt, no install script).
 - **Licensing split:** project licenses stay with projects; site code MPL-2.0; site text
   all rights reserved. `content/` is the boundary.
+- **`status: in development` means not ready to use, and the layout reacts to it:** a
+  caution-coloured tag in the catalogue and the page header, a "Not ready to use"
+  notice under the header, and no dependency snippet or install section. `active`
+  keeps its meaning: usable but changing. Rejected: a label alone (small grey text
+  that reads like "Active", and it wrapped in the catalogue column), and a blockquote
+  note in the body (its green border reads as "go", it is absent from the catalogue,
+  and the install section still invites use). The caution colour is amber because
+  green signals go; contrast is 5.5:1 in light and 9.8:1 in dark. The value is
+  matched as an exact string, so a misspelling shows no warning.
 
 ---
 
