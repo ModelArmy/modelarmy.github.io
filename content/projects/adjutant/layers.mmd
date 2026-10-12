@@ -1,0 +1,17 @@
+---
+displayMode: compact
+---
+flowchart TD
+    subgraph HOST["Host: the Supervisor can kill the worker"]
+        subgraph SANDBOX["OS sandbox, optional: limits reach"]
+            subgraph WORKER["Worker process: a defect costs a run"]
+                subgraph RUNTIME["Interpreter and Legate"]
+                    S["Script"]
+                end
+            end
+        end
+    end
+
+    classDef ring stroke:#6b7b82,stroke-width:1.5px
+    class HOST,SANDBOX,WORKER,RUNTIME ring
+    class S emphasis

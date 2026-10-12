@@ -1,8 +1,7 @@
 # ModelArmy site -- Session Handoff
 
-Last verified 2026-10-10 against `main` at `01d685f` (PR #2: the project descriptions
-and the `in development` status). If `git log` shows newer commits, treat "Where things
-stand" as possibly stale.
+Last verified 2026-10-11 against `main` at `2859740` (the Cordon 0.8.0 page update).
+If `git log` shows newer commits, treat "Where things stand" as possibly stale.
 
 ## Repository
 
@@ -78,7 +77,9 @@ The owner's live instructions in a session override this file.
   verified, both set in repo settings (a root `CNAME` file also exists but is not needed).
 - **Content:** three projects (Adjutant is `in development`; Cordon and Liaison are
   `active`), one post ("About"), and a draft `diagram-demo` post that serves as a test
-  bed. Each project page is a hand-written value overview (see Decisions).
+  bed. Each project page is a hand-written value overview (see Decisions). Cordon's page
+  is current to 0.8.0. Adjutant has no release; its page describes `main`, including the
+  worker process, and says so in Limits.
 - **Design:** the cleaved wordmark (large on the home page, small in the header),
   olive accent (`#55731c` light, `#a8bf7d` dark), self-hosted Archivo and Source
   Serif 4, light and dark following the OS.
@@ -104,6 +105,8 @@ Track tasks as GitHub issues and link them here. At the time of writing:
 - R chart tooling: only the commit-the-SVGs convention exists. Build tooling when the first chart arrives.
 - Project descriptions are refreshed by hand. Each page's Limits section says "As of
   version X"; compare it with the project's `shard.yml` at each minor or major release.
+  Adjutant has no release, so its Limits say "As of `main` on <date>": compare with its
+  `main` when it changes, and switch to "As of version X" at its first release.
   Deferred: a weekly workflow that opens an issue when a project's version moves past
   the page's. Build it when manual checks get missed.
 - Accepted risk: five low-severity `npm audit` findings, all one KaTeX advisory reached
@@ -143,7 +146,8 @@ Each entry gives the reason and what was rejected, so it is not re-argued.
   all rights reserved. `content/` is the boundary.
 - **Project descriptions are written by hand to one shape:** the problem as an opening
   paragraph with no heading, then "What you get" (a few outcomes, one example each),
-  "Limits" (dated "As of version X", taken from the project's own docs), and "Next"
+  "Limits" (dated "As of version X", or "As of `main`" and a date before a first release,
+  taken from the project's own docs), and "Next"
   (links). The audience is a developer deciding whether to use the project. Rejected:
   copying the README (wrong audience), pulling text from the project repos at build time
   (crosses the licensing boundary and merges two audiences), and generating it (a
@@ -184,6 +188,12 @@ Each entry gives the reason and what was rejected, so it is not re-argued.
 - A code block in the prose holds about 65 characters at desktop width. A longer line
   scrolls and clips its last characters. Wrap long lines, then compare `scrollWidth`
   with `clientWidth` on `.prose pre`.
+- Nested Mermaid subgraphs (an onion) need single-line titles and the default layout:
+  elk overlaps nested rings, and a two-line title runs into the next ring. Each ring
+  adds about 55px, so four rings are over the 360px float limit; show them full width.
+  Set ring borders with a `classDef`, and pick a grey that holds 3:1 against both
+  palettes' cluster fills (`#6b7b82` does).
+- Link from one project page to another with `relref`, not a hard-coded path.
 
 ---
 
